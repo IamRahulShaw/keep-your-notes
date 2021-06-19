@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+}
+#outerNavbar{
+    width: 100%;
+    height: 5.2rem;
+    background-color: #DDA0DD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#innerNavbar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30rem;
+}
+#innerNavbar i.fa-sticky-note{
+    font-size: 4.8rem;
+    display: inline-block;
+    color: white;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.25);
+}
+#innerNavbar span{
+    font-size: 2.5rem;
+    font-family: 'Courgette', cursive;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.25);
+}
+@media only screen and (max-width : 550px){
+    #innerNavbar{
+        flex-direction: column;
+    }
+    #innerNavbar i.fa-sticky-note{
+        font-size: 2.5rem;
+    }
+    #innerNavbar span{
+        font-size: 1.7rem;
+    }
+}
+
+#outerAddNoteButton{
+    width: 3.3rem;
+    position: fixed;
+    float: right;
+    top: 6.7rem;
+    right: 5rem;
+    transition: width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+    z-index: 1;
+}
+#outerAddNoteButton:hover{
+    width: 11rem;
+    border-radius: 20px;
+}
+#addNoteButton{
+    width: 3.3rem;
+    height: 3.3rem;
+    background-color: #FF4500;
+    border: none;
+    padding: 0;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+}
+#addNoteButton > .fa-plus{
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.25);
+    margin-top: 0.1rem;
+    transition: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+#outerAddNoteButton:hover .fa-plus{
+    transform: rotateZ(45deg);
+}
+#addNoteButton > span{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 3.6rem;
+    color: #EC407A;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.25);
+    display: none;
+    box-sizing: border-box;
+    width: 8rem;
+    font-size: 1.8rem;
+    font-family: 'Acme', sans-serif;
+}
+#outerAddNoteButton:hover span{
+    display: block;
+}
+@media only screen and (max-width: 1050px){
+    #outerAddNoteButton{
+        top: auto;
+        bottom: 3rem;
+    }
+}
+
+#notesCollection{
+    margin-top: 6rem;
+    margin-left: 2rem;
+    margin-right: 9rem;
+    padding-left: 4rem;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+#notesCollection .notes{
+    border-radius: 10px;
+    width: 18rem;
+    height: 13rem;
+    background-color: #E0FFFF;
+    box-shadow: 2px 4px 4px rgb(0 0 0 / 25%);
+}
+.notes .icons{
+    width: 8rem;
+    position: relative;
+    left: 9.8rem;
+    top: 0.3rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.notes .icons .iconButtons{
+    font-size: 1.3rem;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    border-radius: 50px;
+    box-shadow: 2px 4px 2px rgb(0 0 0 / 25%);
+    cursor: pointer;
+}
+.notes .icons .fa-pen-fancy{
+    background-color: #FF00FF;
+}
+.notes .icons .fa-copy{
+    background-color: #FF6347;
+}
+.notes .icons .fa-trash{
+    background-color: #A52A2A;
+}
+.notes .icons .iconButtons:hover{
+    font-size: 1rem;
+    color: #708090;
+    box-shadow: 2px 4px 8px rgb(0 0 0 / 25%);
+}
+.notes .noteTextHtml{
+    position: relative;
+    top: 0.75rem;
+    left: 0.28rem;
+    width: 17.5rem;
+    height: 10rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow: auto;
+    background-color: white;
+    font-size: 1.1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: default;
+}
+.visibility{
+    visibility: hidden;
+}
+.notes .noteTextArea{
+    position: relative;
+    bottom: 9rem;
+    left: 0.5rem;
+    width: 17rem;
+    height: 9.5rem;
+    resize: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: auto;
+}
+.hidden{
+    display: none;
+}
+
+.notes .noteTextHtml::-webkit-scrollbar, .notes .noteTextArea::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.notes .noteTextHtml::-webkit-scrollbar-track, .notes .noteTextArea::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+.notes .noteTextHtml::-webkit-scrollbar-thumb, .notes .noteTextArea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+@media only screen and (max-width: 1244px) {
+    #notesCollection{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #notesCollection .notes{
+        width: 23rem;
+        height: 15rem;
+    } 
+    .notes .icons{
+        left: 14.8rem;
+    }
+    .notes .noteTextHtml{
+        width: 22.5rem;
+        height: 12rem;
+    }
+    .notes .noteTextArea{
+        width: 22rem;
+        height: 11.5rem;
+        bottom: 11rem;
+    }
+}
+@media only screen and (max-width: 980px) {
+    #notesCollection{
+        grid-template-columns: 10rem 1fr 10rem;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    #notesCollection .notes{
+        grid-column: 2/span 1;
+    } 
+}
+@media only screen and (max-width: 840px) {
+    #notesCollection{
+        grid-template-columns: 1rem 1fr 10rem;
+        margin-left: 0;
+    }
+    #notesCollection .notes{
+        grid-column: 2/span 1;
+    } 
+}
+@media only screen and (max-width: 550px) {
+    #notesCollection{
+        grid-template-columns: 1fr;
+        margin-left: 4rem;
+    }
+    #notesCollection .notes{
+        grid-column: 1/span 1;
+    } 
+}
+@media only screen and (max-width: 480px) {
+    #notesCollection{
+        margin-left: auto;
+        margin-right: auto;
+        width: 15rem;
+    }
+    #notesCollection .notes{
+        width: 15rem;
+    }
+    .notes .icons{
+        left: 6.8rem;
+    }
+    .notes .noteTextHtml{
+        width: 14.5rem;
+    }
+    .notes .noteTextArea{
+        width: 14rem;
+    }
+}
